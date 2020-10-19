@@ -21,6 +21,11 @@ namespace MobileStore.Modules
         }
         public async Task<Media> Create(MediaRequest request)
         {
+            if(request.File == null)
+            {
+                return default;
+            }
+
             var mediaTypeValidation = Utils.ValidateAndGetMediaType(request.File);
 
             if (mediaTypeValidation == null || !mediaTypeValidation.Item1)
